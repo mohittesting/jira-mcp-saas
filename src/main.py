@@ -28,9 +28,9 @@ class JiraMCPTool(BaseTool):
 
         print("[MCP] Starting mcp-atlassian server...", file=sys.stderr)
 
-        # ✅ START MCP SERVER (CORRECT WAY - using Python package)
+        # ✅ START MCP SERVER using uvx (CORRECT WAY)
         self._proc = subprocess.Popen(
-            ["python", "-m", "mcp_atlassian"],
+            ["uvx", "mcp-atlassian"],
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,

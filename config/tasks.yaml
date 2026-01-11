@@ -1,0 +1,7 @@
+fetch_user_story:
+  description: >
+    Fetch the Jira issue with key {{story_key}} using the MCP Atlassian tool
+    and return the raw issue data.
+  expected_output: >
+    Raw Jira issue JSON returned from MCP Atlassian.
+

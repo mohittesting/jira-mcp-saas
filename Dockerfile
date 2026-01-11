@@ -14,9 +14,9 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# ---- MCP Atlassian (REQUIRED) ----
+# ---- MCP Atlassian (CORRECT PATH) ----
 RUN git clone https://github.com/sooperset/mcp-atlassian.git /mcp-atlassian \
- && cd /mcp-atlassian \
+ && cd /mcp-atlassian/packages/server-atlassian \
  && npm install
 
 # App code

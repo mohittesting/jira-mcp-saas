@@ -31,7 +31,7 @@ class JiraMCPTool(BaseTool):
         # ✅ START MCP SERVER (CORRECT WAY)
         self._proc = subprocess.Popen(
             ["node", "index.js"],
-            cwd="/mcp-atlassian",
+            cwd="/mcp-atlassian/packages/server-atlassian",
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,

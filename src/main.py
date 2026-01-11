@@ -28,10 +28,9 @@ class JiraMCPTool(BaseTool):
 
         print("[MCP] Starting mcp-atlassian server...", file=sys.stderr)
 
-        # ✅ START MCP SERVER (CORRECT WAY)
+        # ✅ START MCP SERVER (CORRECT WAY - using Python package)
         self._proc = subprocess.Popen(
-            ["node", "index.js"],
-            cwd="/mcp-atlassian/packages/server-atlassian",
+            ["python", "-m", "mcp_atlassian"],
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
@@ -39,7 +38,9 @@ class JiraMCPTool(BaseTool):
             bufsize=1,
             env={
                 **os.environ,
-                "NODE_ENV": "production",
+                "JIRA_URL": os.getenv("JIRA_URL"),
+                "JIRA_USERNAME": os.getenv("JIRA_USERNAME"),
+                "JIRA_API_TOKEN": os.getenv("JIRA_API_TOKEN"),
             },
         )
 

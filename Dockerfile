@@ -4,8 +4,6 @@ FROM python:3.11-slim
 RUN apt-get update && apt-get install -y \
     curl \
     git \
-    nodejs \
-    npm \
  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -14,10 +12,8 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# ---- MCP Atlassian (CORRECT PATH) ----
-RUN git clone https://github.com/sooperset/mcp-atlassian.git /mcp-atlassian \
- && cd /mcp-atlassian/packages/server-atlassian \
- && npm install
+# ---- Install mcp-atlassian via pip (CORRECT METHOD) ----
+RUN pip install --no-cache-dir mcp-atlassian
 
 # App code
 COPY src ./src

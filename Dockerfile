@@ -12,15 +12,14 @@ RUN node --version && npm --version
 
 WORKDIR /app
 
-# Copy and install Python dependencies
-COPY requirements.txt .
+# Copy everything from your project
+COPY . .
+
+# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application code
-COPY main.py .
-
-# Pre-install the MCP Atlassian package globally (optional but recommended)
+# Pre-install the MCP Atlassian package globally
 RUN npm install -g @modelcontextprotocol/server-atlassian
 
-# Railway will set environment variables
-CMD ["python", "main.py"]
+# Run the main.py from src directory
+CMD ["python", "src/main.py"]
